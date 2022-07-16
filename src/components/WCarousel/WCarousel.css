@@ -1,0 +1,17 @@
+.carousel-outer-container {
+    /* display: block; */
+    position: relative;
+    overflow: hidden;
+    width: 800px;
+    height: 600px;
+  }
+  
+  .carousel-inner-container {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    column-gap: 20px;
+  }
+  
