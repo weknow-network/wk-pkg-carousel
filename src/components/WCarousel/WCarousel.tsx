@@ -11,6 +11,7 @@ const WCarousel: React.FC<IWCarouselProps> = ({
   duration = 2000,
   height: heightProp = '1rem',
   align = 'center'
+  animationDistanceCompensation = 0,
 }) => {
   const [state, setState] = React.useState<{
     index: number;
@@ -23,6 +24,7 @@ const WCarousel: React.FC<IWCarouselProps> = ({
 
   const gap = guardNumber(gapProp) ? `${gapProp}rem` : gapProp;
   const height = guardNumber(heightProp) ? `${heightProp}rem` : heightProp;
+  const distanceCompensation = guardNumber(animationDistanceCompensation) ? `${animationDistanceCompensation}rem` : animationDistanceCompensation;
 
   const currentChildren = children.slice(state.index, children.length);
   const lastChildren = children.slice(0, state.index);
@@ -51,7 +53,7 @@ const WCarousel: React.FC<IWCarouselProps> = ({
               transform: "translateX(0px)",
             },
             {
-              transform: `translateX(calc(-${firstChildWidth}px - ${gap} - 0.55rem))`,
+              transform: `translateX(calc(-${firstChildWidth}px - ${gap} - ${distanceCompensation}))`,
             },
           ],
           {
