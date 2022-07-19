@@ -1,12 +1,16 @@
 import React from "react";
+import { guardNumber } from "./guardNumber";
 import { IWCarouselProps } from "./IWCarouselProps";
 import "./WCarousel.css";
 
-const guardNumber = (x: any): x is number  =>{
-  return typeof x === "number";
-}
-
-const WCarousel: React.FC<IWCarouselProps> = ({ children: stages, gap = 2, interval }) => {
+const WCarousel: React.FC<IWCarouselProps> = ({
+  className,
+  children: stages,
+  gap: gapProp = 2,
+  interval,
+  height: heightProp = '1rem',
+  align = 'center'
+}) => {
   const [state, setState] = React.useState<{
     index: number;
     paused: boolean;
@@ -14,10 +18,10 @@ const WCarousel: React.FC<IWCarouselProps> = ({ children: stages, gap = 2, inter
     index: 0,
     paused: false,
   });
-  const children = Array.isArray(stages) ? stages : [stages]
+  const children = Array.isArray(stages) ? stages : [stages];
 
-
-  const gapValue = guardNumber(gap) ? `${gap}rem` : gap;
+  const gap = guardNumber(gapProp) ? `${gapProp}rem` : gapProp;
+  const height = guardNumber(heightProp) ? `${heightProp}rem` : heightProp;
 
   const currentChildren = children.slice(state.index, children.length);
   const lastChildren = children.slice(0, state.index);
@@ -46,7 +50,7 @@ const WCarousel: React.FC<IWCarouselProps> = ({ children: stages, gap = 2, inter
               transform: "translateX(0px)",
             },
             {
-              transform: `translateX(calc(-${firstChildWidth}px - ${gapValue}))`,
+              transform: `translateX(calc(-${firstChildWidth}px - ${gap}))`,
             },
           ],
           {
@@ -73,12 +77,20 @@ const WCarousel: React.FC<IWCarouselProps> = ({ children: stages, gap = 2, inter
     };
   }, [global.document, state.index]);
 
+  let clsOuter = "carousel-outer-container";
+  let clsInner = "carousel-inner-container";
+  if (className) {
+    clsOuter = `${className}-outer-container carousel-outer-container`;
+    clsInner = `${className}-inner-container carousel-inner-container`;
+  }
+
   return (
-    <div className="carousel-outer-container">
+    <div className={clsOuter}
+        style={{ height }}>
       <div
         ref={ref}
-        className="carousel-inner-container"
-        style={{ columnGap: `${gapValue}` }}
+        className={clsInner}
+        style={{ columnGap: gap, height: 'fit-content', alignItems: align}}
         // onMouseEnter={() => animation.current?.pause()}
         // onMouseLeave={() => animation.current?.play()}
       >

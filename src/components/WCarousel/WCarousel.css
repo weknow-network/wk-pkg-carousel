@@ -1,17 +1,24 @@
 .carousel-outer-container {
-    /* display: block; */
-    position: relative;
-    overflow: hidden;
-    width: 800px;
-    height: 600px;
-  }
+  /* display: block; */
+  display: grid;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  /* height: auto; */
+  /* min-height: 3rem; */
+}
   
-  .carousel-inner-container {
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    /* column-gap: 20px; */
-  }
+.carousel-inner-container {
+  position: absolute;
+  /* display: flex; */
+  display: grid;
+  grid-auto-flow: column;
+  /* flex-direction: row; */
+  /* flex-wrap: nowrap; */
+  justify-content: start;
+  height: 100%;
+  /* justify-content: flex-start; */
+  /* column-gap: 20px; */
+}
   
