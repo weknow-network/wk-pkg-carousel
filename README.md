@@ -1,4 +1,5 @@
-## [Documentation](https://weknow-network.github.io/wk-pkg-carousel)
+## Documentation
+- [Storybook](https://weknow-network.github.io/wk-pkg-carousel){:target="_blank"}
 
 ## Available Scripts
 
