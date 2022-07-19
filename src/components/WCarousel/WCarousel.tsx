@@ -7,7 +7,8 @@ const WCarousel: React.FC<IWCarouselProps> = ({
   className,
   children: stages,
   gap: gapProp = 2,
-  interval,
+  interval = 3000,
+  duration = 2000,
   height: heightProp = '1rem',
   align = 'center'
 }) => {
@@ -54,7 +55,7 @@ const WCarousel: React.FC<IWCarouselProps> = ({
             },
           ],
           {
-            duration: 2000,
+            duration,
             fill: "forwards",
             easing: "ease-in-out",
           }

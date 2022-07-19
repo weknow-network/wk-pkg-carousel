@@ -5,7 +5,8 @@ export interface IWCarouselProps {
   className?: string;
   children: React.ReactNode;
   gap?: number | string;
-  interval: number;
+  interval?: number;
+  duration?: number;
   height?:  number | string;
   align?: AlignOptions | keyof typeof AlignOptions;
 }
