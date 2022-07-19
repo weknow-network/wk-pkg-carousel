@@ -12,6 +12,6 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
-    column-gap: 20px;
+    /* column-gap: 20px; */
   }
   

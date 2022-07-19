@@ -1,13 +1,12 @@
 import React from "react";
+import { IWCarouselProps } from "./IWCarouselProps";
 import "./WCarousel.css";
 
-export interface WCarouselProps {
-  children: React.ReactNode[];
-  gap: number;
-  interval: number;
+const guardNumber = (x: any): x is number  =>{
+  return typeof x === "number";
 }
 
-const WCarousel: React.FC<WCarouselProps> = ({ children, gap, interval }) => {
+const WCarousel: React.FC<IWCarouselProps> = ({ children: stages, gap = 2, interval }) => {
   const [state, setState] = React.useState<{
     index: number;
     paused: boolean;
@@ -15,6 +14,10 @@ const WCarousel: React.FC<WCarouselProps> = ({ children, gap, interval }) => {
     index: 0,
     paused: false,
   });
+  const children = Array.isArray(stages) ? stages : [stages]
+
+
+  const gapValue = guardNumber(gap) ? `${gap}rem` : gap;
 
   const currentChildren = children.slice(state.index, children.length);
   const lastChildren = children.slice(0, state.index);
@@ -43,7 +46,7 @@ const WCarousel: React.FC<WCarouselProps> = ({ children, gap, interval }) => {
               transform: "translateX(0px)",
             },
             {
-              transform: `translateX(-${firstChildWidth + gap}px)`,
+              transform: `translateX(calc(-${firstChildWidth}px - ${gapValue}))`,
             },
           ],
           {
@@ -75,7 +78,7 @@ const WCarousel: React.FC<WCarouselProps> = ({ children, gap, interval }) => {
       <div
         ref={ref}
         className="carousel-inner-container"
-        style={{ columnGap: `${gap}px` }}
+        style={{ columnGap: `${gapValue}` }}
         // onMouseEnter={() => animation.current?.pause()}
         // onMouseLeave={() => animation.current?.play()}
       >
