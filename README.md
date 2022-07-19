@@ -1,5 +1,5 @@
 ## Documentation
-- <a href="https://weknow-network.github.io/wk-pkg-carousel" target="_blank">Storybook</a>
+- [Storybook](https://weknow-network.github.io/wk-pkg-carousel){:target="\_blank"}
 
 ## Available Scripts
 
