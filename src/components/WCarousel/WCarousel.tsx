@@ -51,7 +51,7 @@ const WCarousel: React.FC<IWCarouselProps> = ({
               transform: "translateX(0px)",
             },
             {
-              transform: `translateX(calc(-${firstChildWidth}px - ${gap}))`,
+              transform: `translateX(calc(-${firstChildWidth}px - ${gap} - 0.55rem))`,
             },
           ],
           {
