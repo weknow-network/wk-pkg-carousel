@@ -32,4 +32,10 @@ export interface IWCarouselProps {
    * @deprecated will be remove on later version
    */
   animationDistanceCompensation?: number | string
+
+  /**
+   * When true will automatically slide according to the interval
+   * 'true' by default.    * 
+   */
+  autoPlay?: boolean;
 }

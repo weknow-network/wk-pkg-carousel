@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { guardNumber } from "./guardNumber";
 import { IWCarouselProps } from "./IWCarouselProps";
 import "./WCarousel.css";
@@ -10,7 +10,8 @@ const WCarousel: React.FC<IWCarouselProps> = ({
   interval = 3000,
   duration = 2000,
   height: heightProp = '1rem',
-  align = 'center'
+  align = 'center',
+  autoPlay = true,
   animationDistanceCompensation = 0,
 }) => {
   const [state, setState] = React.useState<{
@@ -33,8 +34,11 @@ const WCarousel: React.FC<IWCarouselProps> = ({
   const animation = React.useRef<Animation>();
   const timeout = React.useRef<NodeJS.Timeout>();
 
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     if (!global.document) return;
+    if (!autoPlay) {
+      return;
+    }
 
     const firstChild = document.querySelector<HTMLElement>(
       ".carousel-inner-container > :first-child"
@@ -78,7 +82,7 @@ const WCarousel: React.FC<IWCarouselProps> = ({
     return () => {
       clearTimeout(timeout.current);
     };
-  }, [global.document, state.index]);
+  }, [global.document, state.index, autoPlay]);
 
   let clsOuter = "carousel-outer-container";
   let clsInner = "carousel-inner-container";
