@@ -2,7 +2,7 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import WCarousel from "./WCarousel";
 import { IWCarouselProps } from "./IWCarouselProps";
-import { getEnumValues } from '../../../.storybook/helpers';
+import { getEnumValues } from "../../../.storybook/helpers";
 import { AlignOptions } from "./AlignOptions";
 
 export default {
@@ -11,12 +11,11 @@ export default {
   argTypes: {
     align: {
       control: {
-        type: 'inline-radio',
+        type: "inline-radio",
         options: getEnumValues(AlignOptions),
       },
     },
   },
-
 } as ComponentMeta<typeof WCarousel>;
 
 const baseStyle: React.CSSProperties = {
@@ -31,19 +30,18 @@ const baseStyle: React.CSSProperties = {
   margin: "6px",
   border: "solid 3px #1d315759",
   height: "auto",
-  display:'grid',
-  alignContent: 'stretch',
-  alignItems: 'stretch',
-  boxSizing: 'border-box',
+  display: "grid",
+  alignContent: "stretch",
+  alignItems: "stretch",
 };
 
 const Template: ComponentStory<typeof WCarousel> = (args: IWCarouselProps) => (
   <WCarousel {...args}>
-    <div style={{ ...baseStyle, width: "150px" }}>Item 1</div>
-    <div style={{ ...baseStyle, width: "200px", height: "4rem" }}>Item 2</div>
+    <div style={{ ...baseStyle, width: "150px",  minWidth: '60rem',  maxWidth: '100%' , padding: "3.3rem 7rem 2rem 4.7rem" }}>Item 1</div>
+    <div style={{ ...baseStyle, width: "200px",maxWidth: '100%' , padding: "3.3rem 7rem 2rem 4.7rem", height: "4rem" }}>Item 2 Item 2 Item 2 Item 2 Item 2 Item 2 Item 2 Item 2 </div>
     <div style={{ ...baseStyle, width: "300px" }}>Item 3</div>
     <div style={{ ...baseStyle, width: "150px" }}>Item 4</div>
-    <div style={{ ...baseStyle, width: "200px", height: "4.5rem"  }}>Item 5</div>
+    <div style={{ ...baseStyle, width: "200px", height: "4.5rem" }}>Item 5</div>
     <div style={{ ...baseStyle, width: "300px" }}>Item 6</div>
   </WCarousel>
 );
@@ -53,5 +51,5 @@ export const Primary = Template.bind({});
 Primary.args = {
   gap: "2rem",
   interval: 3000,
-  height: 15
+  height: 15,
 };

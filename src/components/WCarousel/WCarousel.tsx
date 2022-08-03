@@ -48,12 +48,26 @@ const WCarousel: React.FC<IWCarouselProps> = ({
 
     const firstChildComputed = window.getComputedStyle(firstChild!);
 
+    const isContentBox = firstChildComputed.boxSizing === "content-box";
+
     // Calculates width (in px) as the combination of both
     // calculated with and left/right margin combined
-    const firstChildWidthIncludingMargin =
+    let firstChildWidth =
       parseInt(firstChildComputed.width) +
       parseInt(firstChildComputed.marginLeft) +
       parseInt(firstChildComputed.marginRight);
+
+      // for "box-sizing: content-box" the padding and border width are not included
+      // in the element width calculation so must be added in addition
+    if (isContentBox) {
+      const padding =
+        parseInt(firstChildComputed.paddingLeft) +
+        parseInt(firstChildComputed.paddingRight);
+
+      const border = parseInt(firstChildComputed.borderWidth) * 2;
+
+      firstChildWidth += border + padding;
+    }
 
     timeout.current = setTimeout(() => {
       if (ref.current) {
@@ -63,7 +77,7 @@ const WCarousel: React.FC<IWCarouselProps> = ({
               transform: "translateX(0px)",
             },
             {
-              transform: `translateX(calc(-${firstChildWidthIncludingMargin}px - ${gap}))`,
+              transform: `translateX(calc(-${firstChildWidth}px - ${gap}))`,
             },
           ],
           {
