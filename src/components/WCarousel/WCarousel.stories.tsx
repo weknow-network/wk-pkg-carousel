@@ -37,9 +37,31 @@ const baseStyle: React.CSSProperties = {
 
 const Template: ComponentStory<typeof WCarousel> = (args: IWCarouselProps) => (
   <WCarousel {...args}>
-    <div style={{ ...baseStyle, width: "150px",  minWidth: '60rem',  maxWidth: '100%' , padding: "3.3rem 7rem 2rem 4.7rem" }}>Item 1</div>
-    <div style={{ ...baseStyle, width: "200px",maxWidth: '100%' , padding: "3.3rem 7rem 2rem 4.7rem", height: "4rem" }}>Item 2 Item 2 Item 2 Item 2 Item 2 Item 2 Item 2 Item 2 </div>
-    <div style={{ ...baseStyle, width: "300px" }}>Item 3</div>
+    <div
+      style={{
+        ...baseStyle,
+        width: "150px",
+        minWidth: "60rem",
+        maxWidth: "100%",
+        padding: "100px",
+        boxSizing: "content-box",
+      }}
+    >
+      Item 1
+    </div>
+    <div
+      style={{
+        ...baseStyle,
+        width: "200px",
+        maxWidth: "100%",
+        padding: "20px",
+        height: "4rem",
+        boxSizing: "border-box",
+      }}
+    >
+      Item 2{" "}
+    </div>
+    <div style={{ ...baseStyle, width: "300px" ,  boxSizing: "border-box",}}>Item 3</div>
     <div style={{ ...baseStyle, width: "150px" }}>Item 4</div>
     <div style={{ ...baseStyle, width: "200px", height: "4.5rem" }}>Item 5</div>
     <div style={{ ...baseStyle, width: "300px" }}>Item 6</div>
