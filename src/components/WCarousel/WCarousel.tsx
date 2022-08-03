@@ -9,10 +9,9 @@ const WCarousel: React.FC<IWCarouselProps> = ({
   gap: gapProp = 2,
   interval = 3000,
   duration = 2000,
-  height: heightProp = '1rem',
-  align = 'center',
+  height: heightProp = "1rem",
+  align = "center",
   autoPlay = true,
-  animationDistanceCompensation = 0,
 }) => {
   const [state, setState] = React.useState<{
     index: number;
@@ -25,7 +24,6 @@ const WCarousel: React.FC<IWCarouselProps> = ({
 
   const gap = guardNumber(gapProp) ? `${gapProp}rem` : gapProp;
   const height = guardNumber(heightProp) ? `${heightProp}rem` : heightProp;
-  const distanceCompensation = guardNumber(animationDistanceCompensation) ? `${animationDistanceCompensation}rem` : animationDistanceCompensation;
 
   const currentChildren = children.slice(state.index, children.length);
   const lastChildren = children.slice(0, state.index);
@@ -43,11 +41,19 @@ const WCarousel: React.FC<IWCarouselProps> = ({
     const firstChild = document.querySelector<HTMLElement>(
       ".carousel-inner-container > :first-child"
     );
-    const firstChildWidth = firstChild?.offsetWidth;
 
-    if (!firstChildWidth) {
+    if (!firstChild || !firstChild.offsetWidth) {
       throw Error("Must pass non-zero width children to carousel");
     }
+
+    const firstChildComputed = window.getComputedStyle(firstChild!);
+
+    // Calculates width (in px) as the combination of both
+    // calculated with and left/right margin combined
+    const firstChildWidthIncludingMargin =
+      parseInt(firstChildComputed.width) +
+      parseInt(firstChildComputed.marginLeft) +
+      parseInt(firstChildComputed.marginRight);
 
     timeout.current = setTimeout(() => {
       if (ref.current) {
@@ -57,7 +63,7 @@ const WCarousel: React.FC<IWCarouselProps> = ({
               transform: "translateX(0px)",
             },
             {
-              transform: `translateX(calc(-${firstChildWidth}px - ${gap} - ${distanceCompensation}))`,
+              transform: `translateX(calc(-${firstChildWidthIncludingMargin}px - ${gap}))`,
             },
           ],
           {
@@ -92,12 +98,11 @@ const WCarousel: React.FC<IWCarouselProps> = ({
   }
 
   return (
-    <div className={clsOuter}
-        style={{ height }}>
+    <div className={clsOuter} style={{ height }}>
       <div
         ref={ref}
         className={clsInner}
-        style={{ columnGap: gap, height: 'fit-content', alignItems: align}}
+        style={{ columnGap: gap, height: "fit-content", alignItems: align }}
         // onMouseEnter={() => animation.current?.pause()}
         // onMouseLeave={() => animation.current?.play()}
       >

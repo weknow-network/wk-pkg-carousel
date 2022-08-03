@@ -12,7 +12,7 @@ export interface IWCarouselProps {
   /** Gaps between elements */
   gap?: number | string;
   /**
-   * Interval between animations (milliseconds) 
+   * Interval between animations (milliseconds)
    */
   interval?: number;
   /**
@@ -22,20 +22,14 @@ export interface IWCarouselProps {
   /**
    * Height of the container
    */
-  height?:  number | string;
+  height?: number | string;
   /**
    * Alignment of the elements within the container
    */
   align?: AlignOptions | keyof typeof AlignOptions;
   /**
-   * Walk around to a jumpy animation ends (will be remove on later version)
-   * @deprecated will be remove on later version
-   */
-  animationDistanceCompensation?: number | string
-
-  /**
    * When true will automatically slide according to the interval
-   * 'true' by default.    * 
+   * 'true' by default.    *
    */
   autoPlay?: boolean;
 }

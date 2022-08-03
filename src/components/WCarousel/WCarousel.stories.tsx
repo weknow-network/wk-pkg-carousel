@@ -19,7 +19,7 @@ export default {
 
 } as ComponentMeta<typeof WCarousel>;
 
-const baseStyle = {
+const baseStyle: React.CSSProperties = {
   backgroundColor: "#568899",
   textAlign: "center",
   padding: "2rem",
@@ -34,6 +34,7 @@ const baseStyle = {
   display:'grid',
   alignContent: 'stretch',
   alignItems: 'stretch',
+  boxSizing: 'border-box',
 };
 
 const Template: ComponentStory<typeof WCarousel> = (args: IWCarouselProps) => (
