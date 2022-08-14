@@ -1,9 +1,9 @@
 import React, { useLayoutEffect } from "react";
-import { guardNumber } from "./guardNumber";
+import { guardNumber } from "../guardNumber";
 import { IWCarouselProps } from "./IWCarouselProps";
 import "./WCarousel.css";
 
-const WCarousel: React.FC<IWCarouselProps> = ({
+export const WCarousel: React.FC<IWCarouselProps> = ({
   className,
   children: stages,
   gap: gapProp = 2,
@@ -13,6 +13,7 @@ const WCarousel: React.FC<IWCarouselProps> = ({
   align = 'center',
   autoPlay = true,
   animationDistanceCompensation = 0,
+  easing = 'ease-in-out'
 }) => {
   const [state, setState] = React.useState<{
     index: number;
@@ -63,7 +64,7 @@ const WCarousel: React.FC<IWCarouselProps> = ({
           {
             duration,
             fill: "forwards",
-            easing: "ease-in-out",
+            easing: easing,
           }
         );
 
@@ -108,4 +109,3 @@ const WCarousel: React.FC<IWCarouselProps> = ({
   );
 };
 
-export default WCarousel;

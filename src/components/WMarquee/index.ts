@@ -1,0 +1,1 @@
+export { WMarquee } from "./WMarquee";

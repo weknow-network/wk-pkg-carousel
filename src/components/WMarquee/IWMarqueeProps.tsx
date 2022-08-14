@@ -5,9 +5,9 @@ import { AlignOptions } from "../AlignOptions";
 
 
 /**
- * Carousel props
+ * Marquee props
  */
-export interface IWCarouselProps {
+export interface IWMarqueeProps {
   /** Class name prefix */
   className?: string;
   /** Child elements to slide */
@@ -15,13 +15,9 @@ export interface IWCarouselProps {
   /** Gaps between elements */
   gap?: number | string;
   /**
-   * Interval between animations (milliseconds) 
+   * speed of full cycle animation in seconds
    */
-  interval?: number;
-  /**
-   * Duration of the animation (millis  econds)
-   */
-  duration?: number;
+  speedSec?: number;
   /**
    * Height of the container
    */
@@ -41,9 +37,4 @@ export interface IWCarouselProps {
    * 'true' by default.    * 
    */
   autoPlay?: boolean;
-
-  /**
-   * Timing function of the animation
-   */
-  easing?: 'linear' | 'ease-in-out'
 }
