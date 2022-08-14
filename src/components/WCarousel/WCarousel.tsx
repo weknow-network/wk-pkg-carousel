@@ -3,7 +3,7 @@ import { guardNumber } from "./guardNumber";
 import { IWCarouselProps } from "./IWCarouselProps";
 import "./WCarousel.css";
 
-const WCarousel: React.FC<IWCarouselProps> = ({
+export const WCarousel: React.FC<IWCarouselProps> = ({
   className,
   children: stages,
   gap: gapProp = 2,
@@ -69,8 +69,6 @@ const WCarousel: React.FC<IWCarouselProps> = ({
       firstChildWidth += border + padding;
     }
 
-    console.log(firstChildWidth)
-
     timeout.current = setTimeout(() => {
       if (ref.current) {
         animation.current = ref.current.animate(
@@ -129,4 +127,3 @@ const WCarousel: React.FC<IWCarouselProps> = ({
   );
 };
 
-export default WCarousel;
