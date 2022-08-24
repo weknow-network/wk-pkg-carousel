@@ -1,1 +1,1 @@
-export { default as WCarousel } from "./WCarousel";
+export { WCarousel } from "./WCarousel";

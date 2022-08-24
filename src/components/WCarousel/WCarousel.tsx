@@ -126,4 +126,3 @@ export const WCarousel: React.FC<IWCarouselProps> = ({
     </div>
   );
 };
-
