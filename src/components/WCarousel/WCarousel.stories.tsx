@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { WCarousel } from "./WCarousel";
 import { IWCarouselProps } from "./IWCarouselProps";
 import { getEnumValues } from "../../../.storybook/helpers";
-import { AlignOptions } from "./AlignOptions";
+import { AlignOptions } from "../utility/AlignOptions";
 
 export default {
   title: "WCarousel",

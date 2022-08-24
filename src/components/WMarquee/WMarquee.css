@@ -1,0 +1,42 @@
+.comp-marquee-root {
+  justify-self: stretch;
+  opacity: var(--wmarquee-opacity);
+  transition: opacity 1s ease;
+  padding: var(--wmarquee-padding);
+  justify-self: var(--wmarquee-justify-self);
+}
+
+.comp-marquee-root :hover {
+  opacity: 1;
+}
+
+.comp-marquee-root .marquee {
+  min-width: auto;
+}
+
+.comp-marquee-root .comp-marquee {
+  align-self: end;
+  width: var(--wmarquee-width);
+}
+
+.comp-marquee-root .comp-marquee .comp-marquee-img {
+  max-height: var(--wmarquee-max-height);
+  padding-right: 5rem;
+  mix-blend-mode: multiply;
+  filter: grayscale(100%) brightness(0.5);
+}
+
+.comp-marquee-root .comp-marquee .comp-marquee-movable {
+  position: absolute;
+  display: flex;
+  animation: var(--wmarquee-animation);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: var(--wmarquee-keyframe-transform);
+  }
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import { AlignOptions } from "./AlignOptions";
+import { AlignOptions } from "../utility/AlignOptions";
 
 /**
  * Carousel props

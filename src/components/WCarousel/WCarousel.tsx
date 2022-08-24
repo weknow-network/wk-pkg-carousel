@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from "react";
-import { guardNumber } from "./guardNumber";
+import { guardNumber } from "@weknow.network/wk-pkg-primitives";
 import { IWCarouselProps } from "./IWCarouselProps";
 import "./WCarousel.css";
 
