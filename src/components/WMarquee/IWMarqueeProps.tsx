@@ -1,4 +1,4 @@
-import { IWithClassName } from "@weknow.network/wk-pkg-primitives";
+import { IWithClassName, IWithChildren } from "@weknow.network/wk-pkg-primitives";
 
 export enum JustifyOptions {
   auto = "auto",
@@ -12,7 +12,7 @@ export enum JustifyOptions {
   spaceEvenly = "space-evenly",
 }
 
-export interface IWMarqueeProps extends IWithClassName {
+export interface IWMarqueeProps extends IWithClassName, IWithChildren {
   height?: string | number;
   opacity?: number;
 
@@ -28,6 +28,4 @@ export interface IWMarqueeProps extends IWithClassName {
   justify?: keyof typeof JustifyOptions;
 
   width?: string | number;
-
-  comps: string[]
 }

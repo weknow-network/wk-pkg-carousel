@@ -1,27 +1,14 @@
 import React from "react";
 import { IMarqueeRawBarProps } from "./IWMarqueeRawProps";
+import { IWithChildren } from "@weknow.network/wk-pkg-primitives";
 
-export const WMarqueeRaw = ({ className, comps }: IMarqueeRawBarProps) => {
+export const WMarqueeRaw = ({ className, children }: IMarqueeRawBarProps) => {
   return (
     <div className={`comp-marquee-root ${className}`}>
       <div className="comp-marquee">
         <div className="comp-marquee-movable">
-          {comps.map((m, idx) => (
-            <img
-              key={`${m}-${idx}`}
-              src={m}
-              alt=""
-              className="comp-marquee-img"
-            />
-          ))}
-          {comps.map((m, idx) => (
-            <img
-              key={`${m}-dup-${idx}`}
-              src={m}
-              alt=""
-              className="comp-marquee-img"
-            />
-          ))}
+          {children}
+          {children}
         </div>
       </div>
     </div>

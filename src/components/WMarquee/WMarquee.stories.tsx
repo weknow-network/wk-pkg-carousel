@@ -39,19 +39,48 @@ const Template: ComponentStory<typeof WMarquee> = (args: IWMarqueeProps) => (
   <WMarquee {...args}></WMarquee>
 );
 
-export const Primary = Template.bind({});
+const speed = 8;
+
+const children = (size: number) => {
+  const urls = [
+    "https://source.unsplash.com/400x400?dog",
+    "https://source.unsplash.com/400x400?cat",
+    "https://source.unsplash.com/400x400?man",
+    "https://source.unsplash.com/400x400?woman",
+    "https://source.unsplash.com/400x400?nature",
+    "https://source.unsplash.com/400x400?bee",
+    "https://source.unsplash.com/400x400?lion",
+    "https://source.unsplash.com/400x400?tree",
+  ];
+
+  return urls.map((m, idx) =>  <img
+  key={`${m}-${idx}`}
+  src={m}
+  alt=""
+  className="comp-marquee-img"
+/>);
+}
+
+export const Size400 = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
-  speedSec: 60,
-  comps: [
-    "https://cdn.pixabay.com/photo/2017/11/15/13/27/river-2951997_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2017/11/15/13/27/river-2951997_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2017/11/15/13/27/river-2951997_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2017/11/15/13/27/river-2951997_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2017/11/15/13/27/river-2951997_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2017/11/15/13/27/river-2951997_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2017/11/15/13/27/river-2951997_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2017/11/15/13/27/river-2951997_960_720.jpg",
-    "https://cdn.pixabay.com/photo/2017/11/15/13/27/river-2951997_960_720.jpg",
-  ],
+Size400.args = {
+  speedSec: speed,
+  width:40,
+  children: children(400),
+};
+
+export const Size800 = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Size800.args = {
+  speedSec: speed,
+  width:80,
+  children: children(800),
+};
+
+export const Size1000 = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Size1000.args = {
+  speedSec: speed,
+  width:100,
+  children: children(1000),
 };

@@ -5,7 +5,7 @@ import { setDynamicStyles } from "./WMarquee.styles";
 import "./WMarquee.css";
 
 export const WMarquee = (props: IWMarqueeProps) => {
-  const { className, comps, speedSec = 20 } = props;
+  const { className, children, speedSec = 20 } = props;
 
   useLayoutEffect(() => {
     if (!global.document) return;
@@ -44,5 +44,5 @@ export const WMarquee = (props: IWMarqueeProps) => {
     setDynamicStyles({ ...props, speedSec, slidingWidth });
   }, [global.document]);
 
-  return <WMarqueeRaw className={className} comps={comps} />;
+  return <WMarqueeRaw className={className} children={children} />;
 };
