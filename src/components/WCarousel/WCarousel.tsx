@@ -117,8 +117,8 @@ export const WCarousel: React.FC<IWCarouselProps> = ({
         ref={ref}
         className={clsInner}
         style={{ columnGap: gap, height: "fit-content", alignItems: align }}
-        // onMouseEnter={() => animation.current?.pause()}
-        // onMouseLeave={() => animation.current?.play()}
+        onMouseEnter={() => animation.current?.pause()}
+        onMouseLeave={() => animation.current?.play()}
       >
         {currentChildren}
         {lastChildren}
