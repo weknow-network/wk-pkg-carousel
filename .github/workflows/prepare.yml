@@ -6,8 +6,8 @@ name: Prepare (Version Increment)
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]        
+  # pull_request:
+  #   branches: [ main ]        
   release:
     types: [created]
 
