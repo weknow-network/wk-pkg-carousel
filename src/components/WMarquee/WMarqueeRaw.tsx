@@ -1,8 +1,9 @@
 import React from "react";
-import { IMarqueeRawBarProps } from "./IWMarqueeRawProps";
-import { IWithChildren } from "@weknow.network/wk-pkg-primitives";
 
-export const WMarqueeRaw = ({ className, children }: IMarqueeRawBarProps) => {
+export const WMarqueeRaw = ({
+  className,
+  children,
+}: React.HTMLProps<HTMLDivElement>) => {
   return (
     <div className={`comp-marquee-root ${className}`}>
       <div className="comp-marquee">

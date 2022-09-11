@@ -21,7 +21,7 @@ export interface IWMarqueeProps extends IWithClassName, IWithChildren {
   /**
    * speed of the entire strip in seconds
    */
-  speedSec?: number;
+  // speedSec?: number;
 
   // gradient?: 'background-1' | 'background-2';
 

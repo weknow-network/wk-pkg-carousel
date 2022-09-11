@@ -1,19 +1,19 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { IWMarqueeProps } from "./IWMarqueeProps";
 import { WMarqueeRaw } from "./WMarqueeRaw";
 import { setDynamicStyles } from "./WMarquee.styles";
 import "./WMarquee.css";
 
 export const WMarquee = (props: IWMarqueeProps) => {
-  const { className, children, speedSec = 20 } = props;
+  const { className, children } = props;
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!global.document) return;
 
     const target = document.querySelector<HTMLElement>(".comp-marquee-movable");
 
     if (!target?.offsetWidth) {
-      throw Error("Must pass non-zero width children to carousel");
+      throw Error("Must pass non-zero width children to marquee");
     }
 
     const targetChildComputed = window.getComputedStyle(target!);
@@ -41,7 +41,7 @@ export const WMarquee = (props: IWMarqueeProps) => {
 
     slidingWidth = slidingWidth / 2;
 
-    setDynamicStyles({ ...props, speedSec, slidingWidth });
+    setDynamicStyles({ ...props, slidingWidth });
   }, [global.document]);
 
   return <WMarqueeRaw className={className} children={children} />;

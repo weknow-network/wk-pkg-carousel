@@ -35,6 +35,20 @@ export default {
 //   alignItems: "stretch",
 // };
 
+interface FixedWidthImage {
+  url: string;
+  alt: string;
+  width: number;
+}
+
+const createUnsplashUrl = (size: number, title: string): FixedWidthImage => {
+  return {
+    url: `https://source.unsplash.com/${size}x${size}?${title}`,
+    alt: title,
+    width: size,
+  };
+};
+
 const Template: ComponentStory<typeof WMarquee> = (args: IWMarqueeProps) => (
   <WMarquee {...args}></WMarquee>
 );
@@ -42,45 +56,42 @@ const Template: ComponentStory<typeof WMarquee> = (args: IWMarqueeProps) => (
 const speed = 8;
 
 const children = (size: number) => {
-  const urls = [
-    "https://source.unsplash.com/400x400?dog",
-    "https://source.unsplash.com/400x400?cat",
-    "https://source.unsplash.com/400x400?man",
-    "https://source.unsplash.com/400x400?woman",
-    "https://source.unsplash.com/400x400?nature",
-    "https://source.unsplash.com/400x400?bee",
-    "https://source.unsplash.com/400x400?lion",
-    "https://source.unsplash.com/400x400?tree",
+  const urls: FixedWidthImage[] = [
+    createUnsplashUrl(size, "dog"),
+    createUnsplashUrl(size, "cat"),
+    createUnsplashUrl(size, "man"),
+    createUnsplashUrl(size, "woman"),
+    createUnsplashUrl(size, "nature"),
+    createUnsplashUrl(size, "bree"),
+    createUnsplashUrl(size, "tree"),
+    createUnsplashUrl(size, "lion"),
   ];
 
-  return urls.map((m, idx) =>  <img
-  key={`${m}-${idx}`}
-  src={m}
-  alt=""
-  className="comp-marquee-img"
-/>);
-}
+  return urls.map((u, idx) => (
+    <img
+      key={`${u.url}-${idx}`}
+      src={u.url}
+      alt={u.alt}
+      className="comp-marquee-img"
+      style={{ width: `${u.width}px`, minHeight: "1px" }}
+    />
+  ));
+};
 
 export const Size400 = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Size400.args = {
-  speedSec: speed,
-  width:40,
   children: children(400),
 };
 
 export const Size800 = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Size800.args = {
-  speedSec: speed,
-  width:80,
   children: children(800),
 };
 
 export const Size1000 = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Size1000.args = {
-  speedSec: speed,
-  width:100,
   children: children(1000),
 };
