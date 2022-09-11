@@ -21,9 +21,10 @@
 
 .comp-marquee-root .comp-marquee .comp-marquee-img {
   max-height: var(--wmarquee-max-height);
-  padding-right: 5rem;
+  padding-right: 1rem;
   mix-blend-mode: multiply;
   filter: grayscale(100%) brightness(0.5);
+  object-fit: cover;  
 }
 
 .comp-marquee-root .comp-marquee .comp-marquee-movable {
